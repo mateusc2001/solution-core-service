@@ -3,10 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Proposta, PropostaSchema } from './schema/proposta.schema';
-
+const isProd = process.env.NODE_ENV == 'prod'
+const database = isProd ? 'db-solution-core' : 'db-solution-core-tst';
+const uriDbConnection = `mongodb+srv://mateus:1908@cluster0.f0bostk.mongodb.net/${database}?retryWrites=true&w=majority`;
+console.log(database, uriDbConnection);
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://mateus:1908@cluster0.f0bostk.mongodb.net/freelas?retryWrites=true&w=majority'),
+    MongooseModule.forRoot(uriDbConnection),
     MongooseModule.forFeature([{ name: Proposta.name, schema: PropostaSchema }])
   ],
   controllers: [AppController],
