@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { PropostaMapper } from './mapper/proposta.mapper';
 
 @Controller()
 export class AppController {
@@ -12,10 +13,7 @@ export class AppController {
 
   @Get()
   async find() {
-    const response: any = await this.appService.find();
-    return {
-      resultados: response.length,
-      data: response
-    }
+    const response: any = PropostaMapper.mapToModelList(await this.appService.find());
+    return response;
   }
 }
