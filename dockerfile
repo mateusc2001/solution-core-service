@@ -12,7 +12,7 @@ RUN npm run build
 
 FROM node:latest as production
 
-ARG NODE_ENV=dev
+ARG NODE_ENV=prod
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/app

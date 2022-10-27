@@ -2,8 +2,6 @@ version: "3.7"
 services:
   solution-core:
     container_name: solution-core
-    environment:
-      - NODE_ENV="dev"
     build:
       context: .
     ports:
