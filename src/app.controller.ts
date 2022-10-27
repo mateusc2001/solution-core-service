@@ -16,4 +16,15 @@ export class AppController {
     const response: any = PropostaMapper.mapToModelList(await this.appService.find());
     return response;
   }
+
+  @Post('/visualizacao')
+  createVisualizacao() {
+    return this.appService.addVizualizacao();
+  }
+
+  @Get('/visualizacao')
+  async findVisualizacoes() {
+    const response: any = await this.appService.findVizualizacoes();
+    return response;
+  }
 }
