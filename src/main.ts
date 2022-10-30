@@ -9,6 +9,7 @@ async function bootstrap() {
       "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
     }
   );
-  await app.listen(3000, () => console.log('Ambiente rodando na porta 3000'));
+  const PORT = process.env.PORT || 3000;
+  await app.listen(PORT, () => console.log(`Ambiente rodando na porta ${PORT}`));
 }
 bootstrap();

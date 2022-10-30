@@ -21,7 +21,7 @@ export class AppService {
     const usuarioIdList = propostas.map(item => item.usuariosLidos).flat();
     const semRepetidos = usuarioIdList.filter((este, i) => usuarioIdList.indexOf(este) === i);
 
-    const url = `http://user.service.solutioncore.com.br/user/id-list`;
+    const url = `http://tst.user.service.solutioncore.com.br/user/id-list`;
     const { data }: any = await firstValueFrom(
       this.httpService.get<any>(url, { params: { id: semRepetidos } }).pipe(
         catchError((error: any) => {

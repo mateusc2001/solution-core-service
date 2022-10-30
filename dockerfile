@@ -15,6 +15,9 @@ FROM node:latest as production
 ARG NODE_ENV=prod
 ENV NODE_ENV=${NODE_ENV}
 
+ARG PORT=3003
+ENV PORT=${PORT}
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
