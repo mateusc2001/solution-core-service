@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PropostaMapper } from './mapper/proposta.mapper';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Post()
   create(@Body() obj) {
@@ -13,8 +13,14 @@ export class AppController {
 
   @Get()
   async find() {
-    const response: any = PropostaMapper.mapToModelList(await this.appService.find());
+    const response: any = await this.appService.find();
     return response;
+  }
+
+  @Put('/proposta-id/:propostaId/user-id/:userId')
+  async addUsuarioLido(@Param('propostaId') propostaId: string,
+    @Param('userId') userId: string): Promise<any> {
+      return await this.appService.addUsuarioLido(propostaId, userId);
   }
 
   @Post('/visualizacao')

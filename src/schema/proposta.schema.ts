@@ -23,6 +23,9 @@ export class Proposta {
 
     @Prop({ required: true })
     descricao: string;
+
+    @Prop()
+    usuariosLidos: string[];
 }
 
 export const PropostaSchema = SchemaFactory.createForClass(Proposta);

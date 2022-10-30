@@ -6,6 +6,7 @@ export class PropostaModel {
         public telefone: string,
         public tipoDeServico: string,
         public tipoDeSistema: string,
-        public descricao: string
+        public descricao: string,
+        public usuariosLidos: string[]
     ) {}
 }
